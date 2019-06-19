@@ -1,5 +1,5 @@
-# DIaaS HAL UI Component
-DIaaS HAL UI is a React component that provides a visual mechanism to crawl and discover API resources and operations dynamically for those APIs implementing the HATEOAS pattern. In contrarty to other path-based approaches such as OpenAPI - where static AP specs are used to describe a list of pre-defined path resources and available operations - HAL UI allows both API consumers and producers to work with self-documented REST APIs. Thus, everytime an API implementation changes, these updates will be automatically visible in HAL UI without the need of importing or configuring any API spec.
+# Halstack Browser
+Halstack Browser is a React component that provides a visual mechanism to crawl and discover API resources and operations dynamically for those APIs implementing the HATEOAS pattern. In contrarty to other path-based approaches such as OpenAPI - where static AP specs are used to describe a list of pre-defined path resources and available operations - Halstack Browser allows both API consumers and producers to work with hypermedia, auto-discoverable REST APIs. Thus, everytime an API implementation changes, these updates will be automatically visible in Halstack browser without the need of importing or configuring any API spec.
 
 ## Use
 ### Installation
