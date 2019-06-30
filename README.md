@@ -1,6 +1,10 @@
 # Halstack Browser
 Halstack Browser is a React component that can be included in any React Web App and provides a visual mechanism to crawl and discover API resources and operations dynamically for hypermedia-based APIs. In contrary to other path-based approaches such as OpenAPI (where static specs are used to describe a list of pre-defined path resources and available operations) Halstack Browser allows both API consumers and producers work with auto-discoverable REST APIs just based on their implementations, without any spec. Thus, every time an API implementation changes, these updates will be automatically visible in Halstack Browser Web component without the need of importing or configuring any API spec.
 
+## Halstack Browser in Action
+
+See [this demo app using Halstack browser](https://hal.us.insurance.dxc.com/). Paste your hypermedia-based API endpoint and start browsing!
+
 ## Use
 ### Installation
 
