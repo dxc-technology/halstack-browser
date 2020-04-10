@@ -7,6 +7,7 @@ import Title3 from "./Title3.jsx";
 import Button1 from "./Button1.jsx";
 import InputPropertiesList from "./InputPropertiesList.jsx";
 import Response from "./Response.jsx";
+import { useScreenType } from "../common/utils.js";
 
 export default class Operation extends React.Component {
   constructor(props) {
@@ -27,40 +28,45 @@ export default class Operation extends React.Component {
       params: (method === "GET" && body) || null,
       data: (method !== "GET" && body) || null,
       headers,
-      responseType: "json"
+      responseType: "json",
     })
-      .then(response => {
+      .then((response) => {
         this.setState(() => ({
           isLoading: false,
           error: null,
           response: {
             headers: response.headers,
             body: response.data,
-            halResource: halResource({ body: response.data })
-          }
+            halResource: halResource({ body: response.data }),
+          },
         }));
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState(() => ({
           isLoading: false,
           error,
-          response: null
+          response: null,
         }));
       });
   }
 
   updateFunction(key, value) {
-    this.setState(prevState => ({
-      body: { ...prevState.body, [key]: value === "" ? undefined : value }
+    this.setState((prevState) => ({
+      body: { ...prevState.body, [key]: value === "" ? undefined : value },
     }));
   }
 
   toggleIsExpanded() {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isExpanded: !prevState.isExpanded,
       body: {},
-      response: undefined
+      response: undefined,
     }));
+  }
+
+  updateResize() {
+    let screenType = useScreenType();
+    return screenType;
   }
 
   render() {
@@ -78,16 +84,16 @@ export default class Operation extends React.Component {
             <OperationContent key="operationConten" method={method}>
               <Title3 title="Properties" />
               {(properties.length > 0 && (
-                <RequestContainer>
-                  <PropertiesColumn>
+                <RequestContainer screenType={this.updateResize}>
+                  <PropertiesColumn screenType={this.updateResize}>
                     <InputPropertiesList
                       disabled={isLoading}
                       properties={properties}
                       propertyUpdateFunction={this.updateFunction}
                     />
                   </PropertiesColumn>
-                  <BodyColumn>
-                    <BodyTextArea disabled value={JSON.stringify(body, null, 2)} />
+                  <BodyColumn screenType={this.updateResize}>
+                    <BodyTextArea screenType={this.updateResize} disabled value={JSON.stringify(body, null, 2)} />
                   </BodyColumn>
                 </RequestContainer>
               )) || <EmptyMessage>No properties available for this operation</EmptyMessage>}
@@ -112,11 +118,12 @@ export default class Operation extends React.Component {
 
 const OperationStyled = styled.div`
   width: 100%;
-  background-color: ${props =>
+  min-height: 46px;
+  background-color: ${(props) =>
     props.method === "GET" || props.method === "OPTIONS"
-      ? "#7ee3ff"
+      ? "#b2efff"
       : props.method === "POST" || props.method === "PATCH" || props.method === "PUT"
-      ? "#B0FF7E"
+      ? "#B0FF7E99"
       : "#7E7E7E"};
   display: flex;
   flex-direction: column;
@@ -124,50 +131,51 @@ const OperationStyled = styled.div`
 
 const OperationHeader = styled.div`
   width: 100%;
+  min-height: 46px;
+  align-items: center;
   display: flex;
   cursor: pointer;
 `;
 
 const Rel = styled.div`
-  background-color: ${props =>
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  background-color: ${(props) =>
     props.method === "GET" || props.method === "OPTIONS"
-      ? "#00c9ff"
+      ? "#7fe4ff;"
       : props.method === "POST" || props.method === "PATCH" || props.method === "PUT"
       ? "#64FF00"
       : "black"};
-  color: ${props =>
+  color: ${(props) =>
     props.method === "GET" || props.method === "OPTIONS"
-      ? "#004558"
+      ? "black"
       : props.method === "POST" || props.method === "PATCH" || props.method === "PUT"
-      ? "#245d00"
+      ? "black"
       : "#969696"};
   min-width: 110px;
   text-align: center;
-  line-height: 35px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 600;
   padding: 0px 10px;
 `;
 
 const Method = styled.div`
   margin: 0px 20px;
-  line-height: 35px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 600;
   color: black;
 `;
 
 const OperationTitle = styled.div`
   margin: 0px 10px;
-  line-height: 35px;
-  color: rgba(0, 0, 0, 0.7);
+  font-size: 12px;
+  color: #00000099;
 `;
 
 const OperationContent = styled.div`
-  border-top: ${props =>
-    props.method === "GET" || props.method === "OPTIONS"
-      ? "1px solid #00c9ff"
-      : props.method === "POST" || props.method === "PATCH" || props.method === "PUT"
-      ? "1px solid #64FF00"
-      : "1px solid black"};
+  border-top: 1px solid #ffffffcc;
   padding: 20px;
 `;
 
@@ -177,25 +185,30 @@ const EmptyMessage = styled.div`
   font-size: 13px;
   font-weight: bold;
 `;
-
 const RequestContainer = styled.div`
   display: flex;
+  flex-wrap: ${(props) => (props.screenType !== "desktop" ? "wrap" : "")};
 `;
 const PropertiesColumn = styled.div`
-  width: calc(50% - 10px);
+  width: ${(props) => (props.screenType !== "desktop" ? "100%" : "calc(50% - 10px)")};
   margin-right: 10px;
 `;
 
 const BodyColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: ${(props) => (props.screenType !== "desktop" ? "100%" : "50%")};
 `;
 
 const BodyTextArea = styled.textarea`
-  height: 100%;
+  height: ${(props) => (props.screenType === "desktop" ? "100%" : "200px")};
   margin: 5px 0px;
   box-sizing: border-box;
+  background-color: #212121;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
 `;
 
 const ButtonsContainer = styled.div`
