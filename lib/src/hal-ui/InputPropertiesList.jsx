@@ -2,13 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import InputProperty from "./InputProperty.jsx";
 
-const InputPropertiesList = ({
-  properties,
-  disabled,
-  propertyUpdateFunction
-}) => (
+const InputPropertiesList = ({ properties, disabled, propertyUpdateFunction }) => (
   <PropertiesListStyled>
-    {properties.map(property => (
+    {properties.map((property) => (
       <PropertyLayout>
         <Label>
           {property.key}
@@ -42,6 +38,8 @@ const PropertyLayout = styled.div`
 
 const Label = styled.span`
   width: 50%;
+  display: inline-flex;
+  align-items: center;
 `;
 
 const InputPropertyLayout = styled.div`

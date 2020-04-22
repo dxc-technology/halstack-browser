@@ -32,7 +32,7 @@ const PropertyLayout = styled.div`
 `;
 
 const EmptyList = styled.div`
-  background-color: #d8d8d8;
+  background-color: #eee;
   text-align: center;
   padding: 20px;
   color: #545454;
