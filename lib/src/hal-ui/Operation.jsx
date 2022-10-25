@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { halResource } from "@diaas/api-sdk";
+import { HalResource } from "@dxc-technology/halstack-client";
 import { ClipLoader } from "react-spinners";
 import Title3 from "./Title3.jsx";
 import Button1 from "./Button1.jsx";
@@ -37,7 +37,7 @@ export default class Operation extends React.Component {
           response: {
             headers: response.headers,
             body: response.data,
-            halResource: halResource({ body: response.data }),
+            halResource: HalResource({ body: response.data }),
           },
         }));
       })

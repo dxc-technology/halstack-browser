@@ -21,10 +21,10 @@ import HalUI from "@diaas/hal-ui";
 <HalUI url={api_base_url} headers={headers_object} />
 ```
 ### Properties
-Name|Type|Default|Description
-|:---|:---|:---|:---
-`url`|`String`|None|Required. This property contains the base url of your HAL API.
-`headers`|`JSON Object`|None|Contains an object with the headers to be sent to every request to the API.
+| Name      | Type          | Default | Description                                                                 |
+| :-------- | :------------ | :------ | :-------------------------------------------------------------------------- |
+| `url`     | `String`      | None    | Required. This property contains the base URL of your HAL API.              |
+| `headers` | `JSON Object` | None    | Contains an object with the headers to be sent to every request to the API. |
 
 ## Develop
 In the first place, clone this repository.

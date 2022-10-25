@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { halResource as diasHalResource } from "@diaas/api-sdk";
+import { HalResource as diasHalResource } from "@dxc-technology/halstack-client";
 import { BeatLoader } from "react-spinners";
 import axios from "axios";
 import Title1 from "./Title1.jsx";
@@ -76,11 +76,11 @@ export default class HalUI extends Component {
       (halResource && (
         <HALUI ref={this.compRef}>
           <NavigationHistory historyItems={historyItems} accessItem={this.navigateBack} />
-          <Title1 title={halResource.title || "Resource title not defined"} />
+          <Title1 title={halResource.getTitle() || "Resource title not defined"} />
           <Url>{baseURL}</Url>
           <Title2 title="Operations" />
-          {(halResource.actions.length > 0 &&
-            halResource.actions.map(action => (
+          {(halResource.getInteractions().length > 0 &&
+            halResource.getInteractions().map(action => (
               <OperationLayout>
                 <Operation
                   method={action.method}
@@ -88,13 +88,13 @@ export default class HalUI extends Component {
                   headers={headers}
                   rel={action.rel}
                   title={action.title}
-                  properties={action.propertiesMetadata}
+                  properties={action.getSchemaProperties()}
                   changeBaseResource={this.changeBaseResource}
                 />
               </OperationLayout>
             ))) || <EmptyList>There are no operations defined</EmptyList>}
           <Title2 title="Properties" />
-          <PropertiesList properties={halResource.propertiesMetadata} />
+          <PropertiesList properties={halResource.getProperties()} />
         </HALUI>
       )) || <div />
     );
