@@ -1,12 +1,12 @@
 {
-  "name": "@diaas/hal-ui",
-  "version": "1.0.0",
-  "description": "DIaaS HAL UI",
+  "name": "@dxc-technology/halstack-browser",
+  "version": "0.0.0",
+  "description": "DXC Halstack Browser",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "dependencies": {
-    "@diaas/api-sdk": "0.0.0-beta.11",
-    "axios": "^1.1.3",
+    "@dxc-technology/halstack-client": "^1.3.3",
+    "axios": "^0.18.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-json-view": "^1.19.1",
@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "start": "rollup -c -w"
+    "start": "rollup -c -w",
+    "test": "echo TODO unit test"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -30,7 +31,8 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
     "rollup-plugin-babel": "^4.2.0",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-url": "^2.1.0"
+    "rollup-plugin-postcss": "^1.6.3",
+    "rollup-plugin-url": "^2.1.0",
+    "rollup": "^1.9.0"
   }
 }

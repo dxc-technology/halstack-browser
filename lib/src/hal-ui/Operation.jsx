@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import axios from "axios";
-import { halResource } from "@diaas/api-sdk";
+//import axios from "axios";
+import { HalResource, HalApiCaller } from "@dxc-technology/halstack-client";
 import { ClipLoader } from "react-spinners";
 import Title3 from "./Title3.jsx";
 import Button1 from "./Button1.jsx";
@@ -22,7 +22,7 @@ export default class Operation extends React.Component {
     const { method, url, headers } = this.props;
     const { body } = this.state;
     this.setState(() => ({ response: null, isLoading: true }));
-    axios({
+    /*axios({
       method,
       url,
       params: (method === "GET" && body) || null,
@@ -37,7 +37,41 @@ export default class Operation extends React.Component {
           response: {
             headers: response.headers,
             body: response.data,
-            halResource: halResource({ body: response.data }),
+            halResource: HalResource({ body: response.data }),
+          },
+        }));
+      })
+      .catch((error) => {
+        this.setState(() => ({
+          isLoading: false,
+          error,
+          response: null,
+        }));
+      });*/
+
+      let apiCall;
+      let params; 
+      switch (method) {
+        case 'OPTIONS': apiCall = HalApiCaller.options; params = {url, headers};
+          break;
+        case 'DELETE': apiCall = HalApiCaller.delete;
+          break;
+        case 'PATCH': apiCall = HalApiCaller.patch;
+          break;
+        default:  apiCall = HalApiCaller.get;
+          break;
+      }
+
+      apiCall({url, headers})
+      .then(resp =>{
+        console.log(resp);
+        this.setState(() => ({  
+          isLoading: false,
+          error: null,
+          response: {
+            headers: resp.headers,
+            body: resp.body,
+            halResource: resp.halResource,
           },
         }));
       })
