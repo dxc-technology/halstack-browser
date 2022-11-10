@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "@dxc-technology/halstack-browser": "file:../lib",
-    "@dxc-technology/halstack-client": "^1.3.3",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-scripts": "2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
