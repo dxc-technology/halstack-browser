@@ -9,7 +9,7 @@ See [this demo app using Halstack browser](https://hal.us.insurance.dxc.com/). P
 ### Installation
 
 ```sh
-npm install --save @diaas/hal-ui
+npm install --save TBD
 ```
 ### Implementation example
 
