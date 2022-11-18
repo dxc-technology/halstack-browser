@@ -3,7 +3,7 @@ name: Publish Next Version
 on:
   push:
     branches:
-      - aef-actions
+      - marcialfps-actions
     paths:
       - "lib/**"
 
@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: 16.x
           registry-url: https://registry.npmjs.org/
+
+      - name: Install Global Dependencies
+        run: npm -g install rollup@1.9.0
 
       - name: Install lib dependencies
         run: cd lib && npm install --omit=dev
