@@ -22,7 +22,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Install Global Dependencies
-        run: npm -g install rollup@1.9.0 @rollup/plugin-babel@4.2.0 rollup-plugin-postcss@1.6.3 @rollup/plugin-url@2.1.0
+        run: npm -g install rollup @rollup/plugin-babel rollup-plugin-postcss @rollup/plugin-url
 
       - name: Install lib dependencies
         run: cd lib && npm install --omit=dev
