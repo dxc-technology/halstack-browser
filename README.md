@@ -15,7 +15,7 @@ npm install --save TBD
 
 ```js
 // import the HalUI component
-import HalUI from "@diaas/hal-ui";
+import HalUI from "@diaas/hal-browser";
 
 // use the component in your app
 <HalUI url={api_base_url} headers={headers_object} />
