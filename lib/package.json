@@ -15,7 +15,8 @@
     "styled-components": "^4.1.3"
   },
   "scripts": {
-    "build": "rollup -c",
+    "copy": "node ./scripts/build/copy-distribution-files.js",
+    "build": "rollup -c && npm run copy",
     "start": "rollup -c -w",
     "test": "echo TODO unit test"
   },
