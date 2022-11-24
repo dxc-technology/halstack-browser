@@ -22,7 +22,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Install lib dependencies
-        run: cd lib && npm ci
+        run: cd lib && npm i
 
       - name: Build library
         run: cd lib && npm run build
