@@ -9,13 +9,13 @@ See [this demo app using Halstack browser](https://hal.us.insurance.dxc.com/). P
 ### Installation
 
 ```sh
-npm install --save TBD
+npm install --save @dxc-technology/halstack-browser
 ```
 ### Implementation example
 
 ```js
 // import the HalUI component
-import HalUI from "@diaas/hal-browser";
+import HalUI from "@dxc-technology/halstack-browser";
 
 // use the component in your app
 <HalUI url={api_base_url} headers={headers_object} />
