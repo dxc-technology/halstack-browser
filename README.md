@@ -29,7 +29,7 @@ import HalUI from "@diaas/hal-browser";
 ## Develop
 In the first place, clone this repository.
 ```bash
-git clone https://github.dxc.com/DIaaS/diaas-hal-ui.git
+git clone https://github.com/dxc-technology/halstack-browser
 ```
 Local development is broken into two parts, related to the lib/example folders.
 
