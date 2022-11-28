@@ -4,7 +4,7 @@ import HalUI from "@dxc-technology/halstack-browser";
 import "./App.css";
 
 
-const YOUR_API_KEY = 'RlbIOdmhnj9Pd85G8fwFA5fdJWYcXtHq7my0wNa1'; // From DXC Developer Central
+const YOUR_API_KEY = ''; // From DXC Developer Central
 class App extends Component {
   state = { actions: [] };
 
