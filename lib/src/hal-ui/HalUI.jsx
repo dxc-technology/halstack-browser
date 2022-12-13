@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { HalResource as diasHalResource, HalApiCaller } from "@dxc-technology/halstack-client";
+import { HalResource, HalApiCaller } from "@dxc-technology/halstack-client";
 import { BeatLoader } from "react-spinners";
-import axios from "axios";
 import Title1 from "./Title1.jsx";
 import Title2 from "./Title2.jsx";
 import Operation from "./Operation.jsx";
@@ -28,31 +27,10 @@ export default class HalUI extends Component {
   setBaseResource(url) {
     this.setState(() => ({ halResource: undefined, baseURL: url, isLoading: true }));
     const { headers } = this.props;
-    /*axios({
-      method: "OPTIONS",
-      url,
-      headers,
-      responseType: "json"
-    })
-      .then(response => {
-        const halResource = diasHalResource();  
-        //halResource.addTit
-        response.data.links.map(link=> halResource.addInteraction(link));
-
-        this.setState(prevState => ({
-          halResource,
-          isLoading: false,
-          historyItems: [...prevState.historyItems, { url, title: halResource.title }]
-        }));
-      })
-      .catch(error => {
-        this.setState(() => ({ error, isLoading: false }));
-      });*/
 
       HalApiCaller.options({url, headers})
       .then(optionsResponse =>{
-        console.log(optionsResponse);
-        const halResource = diasHalResource();
+        const halResource = HalResource();
         //Check for undefined
         halResource.addTitle(optionsResponse.body.title); 
         optionsResponse.body.links.map(link => halResource.addInteraction(link));
