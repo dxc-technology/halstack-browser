@@ -9,7 +9,7 @@ See [this demo app using Halstack browser](https://hal.us.insurance.dxc.com/). P
 ### Installation
 
 ```sh
-npm install --save TBD
+npm install @diaas/hal-browser --save
 ```
 ### Implementation example
 
@@ -29,7 +29,7 @@ import HalUI from "@diaas/hal-browser";
 ## Develop
 In the first place, clone this repository.
 ```bash
-git clone https://github.dxc.com/DIaaS/diaas-hal-ui.git
+git clone https://github.com/dxc-technology/halstack-browser.git
 ```
 Local development is broken into two parts, related to the lib/example folders.
 
