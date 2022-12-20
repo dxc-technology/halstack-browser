@@ -5,9 +5,9 @@ import Title3 from "./Title3.jsx";
 const HalResource = ({ resource, changeBaseResource }) => (
   <HalResourceStyled>
     <Title3 title="Links" />
-    {(resource.links.length > 0 && (
+    {(resource.getLinks().length > 0 && (
       <LinksContainer>
-        {resource.links.map(link => (
+        {resource.getLinks().map(link => (
           <LinkButton onClick={() => changeBaseResource(link.href)}>
             {link.rel}
           </LinkButton>
@@ -15,9 +15,9 @@ const HalResource = ({ resource, changeBaseResource }) => (
       </LinksContainer>
     )) || <EmptyMessage>No links available in this resource</EmptyMessage>}
     <Title3 title="Items" />
-    {(resource.items.length > 0 && (
+    {(resource.getItems().length > 0 && (
       <LinksContainer>
-        {resource.items.map((item, i) => (
+        {resource.getItems().map((item, i) => (
           <LinkButton
             title={
               (item.summary && JSON.stringify(item.summary, null, 2)) ||

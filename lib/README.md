@@ -9,7 +9,7 @@ See [this demo app using Halstack browser](https://hal.us.insurance.dxc.com/). P
 ### Installation
 
 ```sh
-npm install --save @dxc-technology/halstack-browser
+npm install @dxc-technology/halstack-browser --save
 ```
 ### Implementation example
 
@@ -29,7 +29,7 @@ import HalUI from "@dxc-technology/halstack-browser";
 ## Develop
 In the first place, clone this repository.
 ```bash
-git clone https://github.com/dxc-technology/halstack-browser
+git clone https://github.com/dxc-technology/halstack-browser.git
 ```
 Local development is broken into two parts, related to the lib/example folders.
 
