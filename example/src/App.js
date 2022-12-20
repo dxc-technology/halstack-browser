@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import HalUI from "@dxc-technology/halstack-browser";
-//import HalUI from "./hal/hal-ui/HalUI";
 import "./App.css";
 
 
